@@ -1,0 +1,3 @@
+[console_scripts]
+rd_filters = rd_filters.rd_filters:main
+

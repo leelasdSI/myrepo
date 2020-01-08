@@ -1,0 +1,114 @@
+# coding: utf-8
+import rdkit
+from rdkit import Chem
+import pandas as pd
+alert = pd.read_csv('alert_collection.csv')
+alert
+alert.columns
+alert.rule_set_name.unique()
+alert[alert.rule_set_name == 'PAINS']
+rules = alert[alert.rule_set_name == 'PAINS']
+rules
+rules
+rules.columns
+rules['MOL'] = [Chem.MolFromSmarts(sma) for sma in rules.smarts]
+rules
+egfr = pd.read_csv('prepared_EGFR.csv')
+egfr
+egfr['ROMol'] = [Chem.MolFromSmiles(smi) for smi in egfr.smiles]
+egfr.columns
+egfr['ROMol'] = [Chem.MolFromSmiles(smi) for smi in egfr.smiles]
+egfr
+mols = []
+for smi in egfr.smiles: 
+    try: 
+        mol = Chem.MolFromSmiles(smi): 
+        mols.append(mol)
+for smi in egfr.smiles: 
+    try: 
+        mol = Chem.MolFromSmiles(smi): 
+        mols.append(mol)
+for smi in list(egfr.smiles): 
+    
+    mol = Chem.MolFromSmiles(smi): 
+    mols.append(mol)
+for smi in egfr.smiles
+for smi in egfr.smiles: 
+    print(smi)
+    
+mols = [Chem.MolFromSmiles(smi) for smi in egfr.smiles]
+mols = []
+for smi in egfr.smiles:
+    try: 
+        mol = Chem.MolFromSmiles(smi)
+    except TypeError:
+        mol = None
+    mols.append(mol)
+        
+egfr['ROMol'] = mols
+egfr[egfr.ROMol.isna()]
+egfr[~egfr.ROMol.isna()]
+egfr
+filter
+%history
+rules
+mol
+mol.HasSubstructMatch(egfr.ROMol[0])
+mol.HasSubstructMatch(rules.MOL[0])
+rules.MOL[0]
+rules[0]
+rules
+rules.columns
+rules.ix[0]
+rules.loc[0]
+rules.loc
+rules.iloc[0]
+rules.iloc[0]['MOL']
+mol.HasSubstructMatch(rules.iloc[0]['MOL'])
+violations = []
+for i in range(len(rules.index)):
+    if mol.HasSubstructMatch(rules.iloc[i]['MOL']):
+        violations.append(rules.iloc[i]['description'])
+        
+violations
+violations = []
+def CheckViolations(mol,rules):
+    violations = []
+    for i in range(len(rules.index)):
+        if mol.HasSubstructMatch(rules.iloc[i]['MOL']):
+            violations.append(rules.iloc[i]['description'])
+        else: 
+            pass
+    return violations
+
+    
+egfr['Viol'] = [CheckViolations(mol,rules) for mol in egfr.ROMol]
+egfr
+egfr[egfr.ROMol.isna()]
+egfr= egfr[~egfr.ROMol.isna()]
+egfr
+egfr['Viol'] = [CheckViolations(mol,rules) for mol in egfr.ROMol]
+egfr
+egfr['NViol'] = [len(viol) for viol in egfr['Viol'] ]
+egfr
+egfr[egfr.NViol<1]
+egfr = egfr[egfr.NViol<1]
+egfr.columns
+egfr[['mol_id','smiles','pIC50']]
+egfr[['mol_id','smiles','pIC50']].to_csv('Cleaned_EGFR.csv')
+egfr
+from rdkit.Chem import PandasTools
+PandasTools.WriteSDF(egfr,'Cleaned_EGFR.sdf',allNumeric=True,properties=egfr.columns)
+cmet = pd.read_csv('prepared_CMET.csv')
+cmet
+cmet.columns
+cmet['ROMol'] = [Chem.MolFromSmiles(smi) for smi in cmet.smiles]
+cmet[cmet.ROMol.isna()]
+cmet['Viol'] = [CheckViolations(mol,rules) for mol in cmet.ROMol]
+cmet['NViol'] = [len(viol) for viol in cmet['Viol'] ]
+cmet = cmet[cmet.NViol<1]
+cmet
+cmet[['mol_id','smiles','pIC50']].to_csv('Cleaned_CMET.csv')
+PandasTools.WriteSDF(cmet,'Cleaned_CMET.sdf',allNumeric=True,properties=egfr.columns)
+%history
+%save -r mysession 1-99999

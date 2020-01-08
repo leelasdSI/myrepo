@@ -1,0 +1,12 @@
+MANIFEST.in
+README.md
+setup.py
+rd_filters/rd_filters.py
+rd_filters.egg-info/PKG-INFO
+rd_filters.egg-info/SOURCES.txt
+rd_filters.egg-info/dependency_links.txt
+rd_filters.egg-info/entry_points.txt
+rd_filters.egg-info/requires.txt
+rd_filters.egg-info/top_level.txt
+rd_filters/data/alert_collection.csv
+rd_filters/data/rules.json

@@ -1,0 +1,19 @@
+Will not apply HSTS. The HSTS database must be a regular and non-world-writable file.
+ERROR: could not open HSTS store at '/home/leelasd/.wget-hsts'. HSTS will be disabled.
+--2020-01-07 21:10:33--  https://www.ebi.ac.uk/chembl/dynamic-downloads/CHEMBL25-chembl_activity-dwcGA9MgKe4xm8yr8ETd6_ih9rSIzpMSKkLBLVWPd0w=.csv.gz
+Resolving www.ebi.ac.uk (www.ebi.ac.uk)... 193.62.193.80
+Connecting to www.ebi.ac.uk (www.ebi.ac.uk)|193.62.193.80|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 322588 (315K) [application/x-gzip]
+Saving to: ‘CHEMBL25-chembl_activity-dwcGA9MgKe4xm8yr8ETd6_ih9rSIzpMSKkLBLVWPd0w=.csv.gz.1’
+
+     0K .......... .......... .......... .......... .......... 15%  188K 1s
+    50K .......... .......... .......... .......... .......... 31%  273K 1s
+   100K .......... .......... .......... .......... .......... 47%  502K 1s
+   150K .......... .......... .......... .......... .......... 63%  499K 0s
+   200K .......... .......... .......... .......... .......... 79%  552K 0s
+   250K .......... .......... .......... .......... .......... 95%  575K 0s
+   300K .......... .....                                      100% 3.38M=0.8s
+
+2020-01-07 21:10:34 (379 KB/s) - ‘CHEMBL25-chembl_activity-dwcGA9MgKe4xm8yr8ETd6_ih9rSIzpMSKkLBLVWPd0w=.csv.gz.1’ saved [322588/322588]
+
